@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Using Jquery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      body{
+        margin: 0;
+        background-color: #616091;
+        overflow: hidden;
+      }
+      h1{
+        color: #fb97ad;
+        text-align: center;
+cursor: pointer;
+      }
+div{
+    margin: 16px auto;
+    padding: 8px;
+    width: 50%;
+    background-color: #04041c;
+    box-shadow: 2px 5px 5px rgba(0, 0,0,0.7);
+    border: none;
+    border-radius: 25px;
+  
+}
+.container{
+    margin: 24px;
+    padding: 24px;
+    color: white;
+    text-align: center;
+align-items: center;
+}
+input{
+    color: white;
+    background-color: #04041c;
+    border: none;
+    border-bottom: 1px solid #616091;
+    border-left: 1px solid #616091;  
+    outline: none;  
+    padding: 3px;
+    font-size: small;
+    cursor: pointer;
+}
+input:focus{
+    outline: none;
+}
+button{
+    border: none;
+    border-radius: 8px;
+    background-color: #b4b3d8;
+    padding: 5px;
+    cursor: pointer;
+}
+ol{
+    text-align: left;
+}
+@media (max-width:767px)  {
+    div{
+    margin: 16px;
+    padding: 8px;
+    width: 90%;
+    background-color: #04041c;
+    box-shadow: 2px 5px 5px rgba(0, 0,0,0.7);
+    border: none;
+    border-radius: 25px;
+}
+.container{
+    margin: 4px;
+    margin-top: 15px;
+    padding: 4px;
+    color: white;
+    text-align: center;
+
+}
+}
+@media (max-width:320px)  {
+    div{
+    margin: 10px;
+    padding: 5px;
+    width: 90%;
+    background-color: #04041c;
+    box-shadow: 2px 5px 5px rgba(0, 0,0,0.7);
+    border: none;
+    border-radius: 25px;
+}
+.container{
+    margin: 4px;
+    margin-top: 15px;
+    padding: 2px;
+    color: white;
+    text-align: center;
+
+}
+button{
+    border: none;
+    border-radius: 8px;
+    background-color: #b4b3d8;
+    padding: 3px;
+    cursor: pointer;
+}
+input{
+    color: white;
+    background-color: #04041c;
+    border: none;
+    border-bottom: 1px solid #616091;
+    border-left: 1px solid #616091;  
+    outline: none;  
+    padding: 1px;
+    margin-left: -5px;
+    width: 100px;
+    font-size: small;
+    cursor: pointer;
+}
+}
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Todo List Using Jquery</h1></div>
+    <div>
+        <div class="container">
+    <input type="text" id="newItemInput" placeholder="New Items">
+    <button id="addItemButton">Add ToDo</button>
+    <button id="removeItem">Delete</button>
+   
+    <ol id="todoList">
+<!-- todo itmes can be added here -->
+    </ol>
+</div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#addItemButton").click(function(){
+    const newItemText = $("#newItemInput").val()+'';
+    if(newItemText){
+        const newItem = $(" <li></li>").text(newItemText);
+        $("#todoList").append(newItem);
+        $("#newItemInput").val(""); //clear the input
+    }
+});
+// $("#todoList").on("click" ,"li" , function(){
+//     $(this).toggleClass("completed");
+// });
+// $("#removeItem").click(function(){
+//     $(".completed").remove();
+// });
+
+$("#removeItem").click(function(){
+    $("li").first().remove();
+});
+
+
+});
+</script>
+</html>
